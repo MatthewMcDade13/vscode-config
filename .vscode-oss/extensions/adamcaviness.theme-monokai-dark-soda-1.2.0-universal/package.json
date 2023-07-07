@@ -1,0 +1,41 @@
+{
+	"name": "theme-monokai-dark-soda",
+	"displayName": "Monokai Dark Soda",
+	"description": "A dark theme with bright colors",
+	"version": "1.2.0",
+	"publisher": "AdamCaviness",
+	"repository": "https://github.com/AdamCaviness/vs-code-theme-monokai-dark-soda",
+	"icon": "theme-monokai-dark-soda.png",
+	"keywords": [
+		"monokai",
+		"dark",
+		"soda",
+		"theme",
+		"vscode"
+	],
+	"engines": {
+		"vscode": "^0.10.1"
+	},
+	"categories": [
+		"Themes"
+	],
+	"contributes": {
+		"themes": [
+			{
+				"label": "Monokai Dark Soda",
+				"uiTheme": "vs-dark",
+				"path": "./themes/monokai-dark-soda-color-theme.json"
+			}
+		]
+	},
+	"__metadata": {
+		"id": "15de929b-c739-49db-86bc-b968cc6b7a5b",
+		"publisherId": "de925631-f87c-4d68-a8d8-4dde56bc19d2",
+		"publisherDisplayName": "AdamCaviness",
+		"targetPlatform": "universal",
+		"updated": false,
+		"isPreReleaseVersion": false,
+		"installedTimestamp": 1688072975118,
+		"preRelease": false
+	}
+}

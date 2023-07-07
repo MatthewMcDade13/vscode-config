@@ -1,0 +1,58 @@
+{
+	"name": "onedark-modern",
+	"displayName": "One Dark Modern",
+	"description": "One Dark Modern Theme",
+	"version": "1.0.5",
+	"publisher": "cweijan",
+	"icon": "icon.png",
+	"engines": {
+		"vscode": "^1.50.0"
+	},
+	"categories": [
+		"Themes"
+	],
+	"keywords": [
+		"Theme"
+	],
+	"bugs": {
+		"url": "https://github.com/cweijan/OneDark-Modern/issues",
+		"email": "cweijan@163.com"
+	},
+	"homepage": "https://github.com/cweijan/OneDark-Modern/blob/master/README.md",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/cweijan/OneDark-Modern.git"
+	},
+	"contributes": {
+		"themes": [
+			{
+				"label": "One Dark Modern",
+				"uiTheme": "vs-dark",
+				"path": "./theme/onedark-modern.json"
+			},
+			{
+				"label": "One Dark Modern Classic",
+				"uiTheme": "vs-dark",
+				"path": "./theme/onedark-modern-classic.json"
+			}
+		],
+		"iconThemes": [
+			{
+				"id": "office-material-icon-theme",
+				"label": "Office Material Icon Theme",
+				"path": "./theme/material-icons.json",
+				"_watch": true
+			}
+		]
+	},
+	"__metadata": {
+		"id": "61f7566d-4354-481b-8d96-6490e749b56c",
+		"publisherId": "43004267-e6e4-497f-b826-dda371e4ec49",
+		"publisherDisplayName": "cweijan",
+		"targetPlatform": "universal",
+		"updated": false,
+		"isPreReleaseVersion": false,
+		"installedTimestamp": 1688072973798,
+		"preRelease": false
+	}
+}

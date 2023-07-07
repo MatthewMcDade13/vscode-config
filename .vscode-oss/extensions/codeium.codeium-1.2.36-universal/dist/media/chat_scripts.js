@@ -1,0 +1,1 @@
+function copy_code_block(e,o){const c=document.getElementById(e);c&&(navigator.clipboard.writeText(c.innerText),window._vscode?.postMessage({type:"copy-code-block",code:c.innerText,messageID:o}))}

@@ -1,0 +1,42 @@
+{
+	"name": "wildberries",
+	"displayName": "Wildberries",
+	"description": "A dark theme for purple lovers",
+	"publisher": "wildberries-theme",
+	"version": "0.0.1",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/gbgabo/wildberries"
+	},
+	"engines": {
+		"vscode": "^1.68.0"
+	},
+	"icon": "icon.png",
+	"categories": [
+		"Themes"
+	],
+	"contributes": {
+		"themes": [
+			{
+				"label": "Wildberries",
+				"uiTheme": "vs-dark",
+				"path": "./themes/wildberries-theme.json"
+			},
+			{
+				"label": "Wildberries Darker",
+				"uiTheme": "vs-dark",
+				"path": "./themes/wildberries-theme-darker.json"
+			}
+		]
+	},
+	"__metadata": {
+		"id": "3ed09990-5074-4c8a-9016-cbf158cbb71a",
+		"publisherId": "68c7478e-3772-4a55-8bcf-6f20b2a3eded",
+		"publisherDisplayName": "wildberries-theme",
+		"targetPlatform": "universal",
+		"updated": false,
+		"isPreReleaseVersion": false,
+		"installedTimestamp": 1688072849765,
+		"preRelease": false
+	}
+}

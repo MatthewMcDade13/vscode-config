@@ -1,0 +1,52 @@
+{
+	"name": "jetbrains-new-dark",
+	"displayName": "JetBrains New Dark",
+	"description": "A theme for Visual Studio Code that closely resembles the new JetBrains Dark theme.",
+	"version": "0.0.1",
+	"publisher": "MoBalic",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/mobalti/jetbrains-new-dark"
+	},
+	"engines": {
+		"vscode": "^1.78.0"
+	},
+	"keywords": [
+		"theme",
+		"dark theme",
+		"jetbrains",
+		"webstorm",
+		"intellij",
+		"Darcula",
+		"webstorm dark theme",
+		"intellij dark theme",
+		"Jetbrains dark theme",
+		"webstorm new dark",
+		"intellij new dark",
+		"Jetbrains new dark",
+		"new dark"
+	],
+	"categories": [
+		"Themes"
+	],
+	"contributes": {
+		"themes": [
+			{
+				"label": "JetBrains New Dark",
+				"uiTheme": "vs-dark",
+				"path": "./themes/JetBrains New Dark-color-theme.json"
+			}
+		]
+	},
+	"icon": "icon.png",
+	"__metadata": {
+		"id": "0d06f74c-4e42-40bf-9700-77d0746f1c20",
+		"publisherId": "1a4a6bae-0653-48be-9bad-c57f8839d8bb",
+		"publisherDisplayName": "MoBalic",
+		"targetPlatform": "universal",
+		"updated": false,
+		"isPreReleaseVersion": false,
+		"installedTimestamp": 1688071870628,
+		"preRelease": false
+	}
+}

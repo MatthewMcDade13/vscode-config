@@ -1,0 +1,462 @@
+{
+	"name": "git-blame",
+	"displayName": "Git Blame",
+	"description": "Git the fastest blame ever",
+	"version": "0.1.820230463",
+	"publisher": "solomonkinard",
+	"icon": "media/icon.png",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/solomonkinard/public"
+	},
+	"engines": {
+		"vscode": "^1.70.0"
+	},
+	"categories": [
+		"SCM Providers"
+	],
+	"activationEvents": [
+		"onStartupFinished"
+	],
+	"keywords": [
+		"git blame",
+		"gitblame",
+		"git",
+		"blame",
+		"fast",
+		"history",
+		"line history",
+		"file history",
+		"commit",
+		"log",
+		"diff",
+		"settings",
+		"web",
+		"sha",
+		"scm",
+		"source control",
+		"online"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "git-blame.statusClick",
+				"title": "Git Blame: Log",
+				"when": "editorIsOpen"
+			},
+			{
+				"command": "git-blame.gitDiff.next",
+				"title": ">"
+			},
+			{
+				"command": "git-blame.gitDiff.prev",
+				"title": "<"
+			},
+			{
+				"command": "gitBlame.fileView.refresh",
+				"title": "Refresh",
+				"icon": "$(refresh)"
+			},
+			{
+				"command": "git-blame.diffView.refresh",
+				"title": "Refresh",
+				"icon": "$(refresh)"
+			},
+			{
+				"command": "git-blame.diffView.setRef",
+				"title": "Change Base",
+				"icon": "$(source-control)"
+			},
+			{
+				"command": "git-blame.diffView.showFile",
+				"title": "Show File",
+				"icon": "$(preferences-open-settings)"
+			},
+			{
+				"command": "gitBlame.lineView.refresh",
+				"title": "Refresh",
+				"icon": "$(refresh)"
+			},
+			{
+				"command": "git-blame.OpenCommitOnTheWeb",
+				"title": "Git Blame: Open Online",
+				"icon": "$(browser)",
+				"when": "editorIsOpen"
+			},
+			{
+				"command": "git-blame.command.search",
+				"title": "Git Blame: Search"
+			},
+			{
+				"command": "git-blame.command.lineHistory",
+				"title": "Git Blame: Line History"
+			},
+			{
+				"command": "git-blame.command.fileHistory",
+				"title": "Git Blame: File History"
+			},
+			{
+				"command": "git-blame.command.reflog",
+				"title": "Git Blame: Reflog"
+			},
+			{
+				"command": "git-blame.commands.showPatch",
+				"title": "Git Blame: Show Patch"
+			},
+			{
+				"command": "git-blame.logView.refresh",
+				"title": "Refresh",
+				"icon": "$(refresh)"
+			},
+			{
+				"command": "git-blame.logView.setAuthor",
+				"title": "Author",
+				"icon": "$(person)"
+			},
+			{
+				"command": "git-blame.logView.setRef",
+				"title": "Ref",
+				"icon": "$(source-control)"
+			},
+			{
+				"command": "git-blame.logView.toggleReflog",
+				"title": "Toggle reflog"
+			},
+			{
+				"command": "git-blame.fileView.refresh",
+				"title": "Refresh",
+				"icon": "$(refresh)"
+			},
+			{
+				"command": "git-blame.fileView.setAuthor",
+				"title": "Author",
+				"icon": "$(person)"
+			},
+			{
+				"command": "git-blame.fileView.setRef",
+				"title": "Ref",
+				"icon": "$(source-control)"
+			},
+			{
+				"command": "git-blame.fileView.toggleReflog",
+				"title": "Toggle reflog"
+			},
+			{
+				"command": "git-blame.diffView.diffAll",
+				"title": "Diff All",
+				"icon": "$(preferences-open-settings)"
+			},
+			{
+				"command": "git-blame.branchView.refresh",
+				"title": "Refresh",
+				"icon": "$(refresh)"
+			},
+			{
+				"command": "git-blame.treeView.openLog",
+				"title": "Log",
+				"icon": "$(list-tree)"
+			},
+			{
+				"command": "git-blame.diffView.diffStat",
+				"title": "Stat",
+				"icon": "$(list-tree)"
+			},
+			{
+				"command": "git-blame.treeView.openResourceUri",
+				"title": "Open",
+				"icon": "$(go-to-file)"
+			}
+		],
+		"configuration": {
+			"title": "Git Blame",
+			"properties": {
+				"git-blame.gitWebUrl": {
+					"type": "string",
+					"default": "",
+					"description": "Web url to open git log",
+					"markdownDescription": "The url to open when opening git web online.\n\nExample: `https://example.com/$ID`, where `$ID` is the commit id."
+				},
+				"git-blame.showStatusBar": {
+					"type": "boolean",
+					"default": true,
+					"description": "Status bar visible"
+				},
+				"git-blame.config.logClickUrls": {
+					"type": "object",
+					"description": "Customizable click urls based the contents of a line."
+				},
+				"git-blame.config.showBlameInline": {
+					"type": "boolean",
+					"default": true,
+					"description": "Show inline blame alongside code."
+				},
+				"git-blame.config.inlineBlameStartColumn": {
+					"type": "number",
+					"default": 80,
+					"description": "What column to start the left aligned inline blame."
+				},
+				"git-blame.config.inlineBlameHoverMessage": {
+					"type": "boolean",
+					"default": false,
+					"description": "Show the clickable email address as a hover message."
+				},
+				"git-blame.logView.maxCommitCount": {
+					"type": "number",
+					"default": 50,
+					"description": "Maximum number of commits in Git Blame Log."
+				},
+				"git-blame.fileView.maxCommitCount": {
+					"type": "number",
+					"default": 50,
+					"description": "Maximum number of commits in Git Blame File."
+				},
+				"git-blame.branchView.maxCommitCount": {
+					"type": "number",
+					"default": 50,
+					"description": "Maximum number of commits in Git Blame Branch."
+				}
+			}
+		},
+		"menus": {
+			"editor/title": [
+				{
+					"command": "git-blame.gitDiff.next",
+					"group": "navigation@2",
+					"when": "resourceScheme == git-blame.gitDiff"
+				},
+				{
+					"command": "git-blame.gitDiff.prev",
+					"group": "navigation@1",
+					"when": "resourceScheme == git-blame.gitDiff"
+				}
+			],
+			"commandPalette": [
+				{
+					"command": "git-blame.gitDiff.next",
+					"when": "resourceScheme == git-blame.gitDiff"
+				},
+				{
+					"command": "git-blame.gitDiff.prev",
+					"when": "resourceScheme == git-blame.gitDiff"
+				}
+			],
+			"view/title": [
+				{
+					"command": "gitBlame.fileView.refresh",
+					"when": "view == gitBlameDocumentView",
+					"group": "navigation"
+				},
+				{
+					"command": "git-blame.diffView.diffStat",
+					"when": "view == gitBlameDiffView",
+					"group": "navigation"
+				},
+				{
+					"command": "git-blame.diffView.setRef",
+					"when": "view == gitBlameDiffView",
+					"group": "navigation"
+				},
+				{
+					"command": "git-blame.diffView.refresh",
+					"when": "view == gitBlameDiffView",
+					"group": "navigation"
+				},
+				{
+					"command": "git-blame.diffView.diffAll",
+					"when": "view == gitBlameDiffView",
+					"group": "navigation"
+				},
+				{
+					"command": "gitBlame.lineView.refresh",
+					"when": "view == gitBlameLineView",
+					"group": "navigation"
+				},
+				{
+					"command": "git-blame.logView.refresh",
+					"when": "view == gitBlameLogView",
+					"group": "navigation"
+				},
+				{
+					"command": "git-blame.logView.setAuthor",
+					"when": "view == gitBlameLogView",
+					"group": "navigation"
+				},
+				{
+					"command": "git-blame.logView.setRef",
+					"when": "view == gitBlameLogView",
+					"group": "navigation"
+				},
+				{
+					"command": "git-blame.logView.toggleReflog",
+					"when": "view == gitBlameLogView"
+				},
+				{
+					"command": "git-blame.fileView.refresh",
+					"when": "view == gitBlameFileView",
+					"group": "navigation"
+				},
+				{
+					"command": "git-blame.fileView.setAuthor",
+					"when": "view == gitBlameFileView",
+					"group": "navigation"
+				},
+				{
+					"command": "git-blame.fileView.setRef",
+					"when": "view == gitBlameFileView",
+					"group": "navigation"
+				},
+				{
+					"command": "git-blame.fileView.toggleReflog",
+					"when": "view == gitBlameFileView"
+				},
+				{
+					"command": "git-blame.branchView.refresh",
+					"when": "view == gitBlameBranchView",
+					"group": "navigation"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "git-blame.diffView.showFile",
+					"when": "view == gitBlameDiffView",
+					"group": "inline"
+				},
+				{
+					"command": "git-blame.treeView.openLog",
+					"when": "view == gitBlameLogView && viewItem == commit",
+					"group": "inline"
+				},
+				{
+					"command": "git-blame.treeView.openResourceUri",
+					"when": "view == gitBlameLogView && viewItem == file",
+					"group": "inline"
+				},
+				{
+					"command": "git-blame.treeView.openResourceUri",
+					"when": "view == gitBlameFileView && viewItem == file",
+					"group": "inline"
+				},
+				{
+					"command": "git-blame.treeView.openLog",
+					"when": "view == gitBlameFileView && viewItem == commit",
+					"group": "inline"
+				},
+				{
+					"command": "git-blame.treeView.openResourceUri",
+					"when": "view == gitBlameBranchView && viewItem == file",
+					"group": "inline"
+				},
+				{
+					"command": "git-blame.treeView.openLog",
+					"when": "view == gitBlameBranchView && viewItem == branch",
+					"group": "inline"
+				},
+				{
+					"command": "git-blame.treeView.openLog",
+					"when": "view == gitBlameDocumentView && viewItem == commit",
+					"group": "inline"
+				},
+				{
+					"command": "git-blame.treeView.openLog",
+					"when": "view == gitBlameVisibleCommitsView && viewItem == commit",
+					"group": "inline"
+				},
+				{
+					"command": "git-blame.treeView.openResourceUri",
+					"when": "view == gitBlameVisibleCommitsView && viewItem == file",
+					"group": "inline"
+				}
+			]
+		},
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "git-blame-explorer",
+					"title": "Git Blame",
+					"icon": "media/menu.svg"
+				}
+			]
+		},
+		"views": {
+			"git-blame-explorer": [
+				{
+					"id": "gitBlameDiffView",
+					"name": "Diff",
+					"when": "editorIsOpen"
+				},
+				{
+					"id": "gitBlameFileView",
+					"name": "File",
+					"when": "editorIsOpen"
+				},
+				{
+					"id": "gitBlameLineView",
+					"name": "Line",
+					"when": "editorIsOpen"
+				},
+				{
+					"id": "gitBlameBranchView",
+					"name": "Branch",
+					"when": "editorIsOpen"
+				},
+				{
+					"id": "gitBlameLogView",
+					"name": "Log",
+					"when": "editorIsOpen"
+				},
+				{
+					"id": "gitBlameDocumentView",
+					"name": "Document",
+					"when": "editorIsOpen"
+				},
+				{
+					"id": "gitBlameVisibleCommitsView",
+					"name": "Visible",
+					"when": "editorIsOpen"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"compile": "npm run esbuild",
+		"watch": "tsc -watch -p ./",
+		"vscode:prepublish": "npm run clean && npm run esbuild-base -- --minify",
+		"esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
+		"esbuild": "npm run esbuild-base -- --sourcemap",
+		"esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
+		"lint": "eslint src --ext ts",
+		"clean": "rm -rf out/*",
+		"clean-1g-test-dir": "rm -rf .vscode-test/*",
+		"test": "npm run clean && tsc -p ./ --outDir out/ && node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.2.0",
+		"@types/mocha": "^9.1.1",
+		"@types/node": "14.x",
+		"@types/vscode": "^1.70.0",
+		"@typescript-eslint/eslint-plugin": "^5.21.0",
+		"@typescript-eslint/parser": "^5.21.0",
+		"@vscode/test-electron": "^2.3.2",
+		"eslint": "^8.14.0",
+		"glob": "^8.0.1",
+		"mocha": "^9.2.2",
+		"typescript": "^4.6.4"
+	},
+	"dependencies": {
+		"esbuild": "^0.15.18",
+		"uglify-js": "^3.17.0",
+		"vscode-test": "^1.6.1"
+	},
+	"__metadata": {
+		"id": "1396f65d-7c09-47b4-9b9d-0945de1c0407",
+		"publisherId": "e14ece89-5451-4498-84e6-da39a47610d5",
+		"publisherDisplayName": "solomonkinard",
+		"targetPlatform": "universal",
+		"isApplicationScoped": false,
+		"updated": true,
+		"isPreReleaseVersion": false,
+		"installedTimestamp": 1688500048500,
+		"preRelease": false
+	}
+}

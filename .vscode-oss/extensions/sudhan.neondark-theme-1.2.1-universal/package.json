@@ -1,0 +1,64 @@
+{
+	"name": "neondark-theme",
+	"displayName": "Neon Dark Theme",
+	"description": "An eye-catching neon theme which powerup your code editor into awesome code editor",
+	"version": "1.2.1",
+	"publisher": "Sudhan",
+	"browser": "./src/index.js",
+	"author": {
+		"name": "SudhanPlayz",
+		"url": "https://github.com/SudhanPlayz"
+	},
+	"scripts": {
+		"lint": "eslint . --ext .js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/SudhanPlayz/NeonDark-Theme"
+	},
+	"icon": "images/vsc.png",
+	"engines": {
+		"vscode": "^1.56.0"
+	},
+	"main": "src/index.js",
+	"keywords": [
+		"vsc-theme",
+		"neondark",
+		"neon",
+		"dark",
+		"theme",
+		"violet-theme"
+	],
+	"categories": [
+		"Themes"
+	],
+	"activationEvents": [
+		"onStartupFinished"
+	],
+	"galleryBanner": {
+		"color": "#7000ff",
+		"theme": "dark"
+	},
+	"contributes": {
+		"themes": [
+			{
+				"label": "Neon Dark Theme",
+				"uiTheme": "vs-dark",
+				"path": "./themes/Neon Dark Theme-color-theme.json"
+			}
+		]
+	},
+	"dependencies": {
+		"eslint": "^7.26.0"
+	},
+	"__metadata": {
+		"id": "5d8a4f00-ca58-432a-998a-86e4d5df8ccb",
+		"publisherId": "0fb2ef9d-6c45-47e2-a1f5-1eaafec32005",
+		"publisherDisplayName": "Sudhan",
+		"targetPlatform": "universal",
+		"updated": false,
+		"isPreReleaseVersion": false,
+		"installedTimestamp": 1688072471543,
+		"preRelease": false
+	}
+}

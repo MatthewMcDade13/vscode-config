@@ -1,0 +1,308 @@
+{
+	"name": "codeium",
+	"displayName": "Codeium: AI Coding Autocomplete and Chat for Python, Javascript, Typescript, Java, Go, and more",
+	"description": "The modern coding superpower: free AI code acceleration plugin for your favorite languages. Type less. Code more. Ship faster.",
+	"version": "1.2.36",
+	"publisher": "Codeium",
+	"icon": "assets/icon.png",
+	"galleryBanner.color": "#06B6A2",
+	"engines": {
+		"vscode": "^1.68.0"
+	},
+	"bugs": {
+		"url": "https://discord.gg/3XFf78nAx5",
+		"email": "support@codeium.com"
+	},
+	"categories": [
+		"Machine Learning",
+		"Programming Languages",
+		"Snippets"
+	],
+	"keywords": [
+		"ai",
+		"autocomplete",
+		"intellicode",
+		"intellisense",
+		"code completion",
+		"chatgpt",
+		"bash",
+		"c",
+		"cpp",
+		"c++",
+		"css",
+		"go",
+		"golang",
+		"html",
+		"java",
+		"javascript",
+		"jupyter",
+		"kotlin",
+		"node",
+		"nodejs",
+		"php",
+		"python",
+		"react",
+		"ruby",
+		"rust",
+		"swift",
+		"typescript"
+	],
+	"activationEvents": [
+		"onStartupFinished"
+	],
+	"main": "./dist/extension.js",
+	"contributes": {
+		"configuration": {
+			"title": "Codeium",
+			"properties": {
+				"codeium.enableConfig": {
+					"type": "object",
+					"default": {
+						"*": true
+					},
+					"description": "Enable / disable Codeium globally or for specific languages"
+				},
+				"codeium.detectProxy": {
+					"type": "boolean",
+					"default": true,
+					"description": "Enable automatic proxy detection."
+				},
+				"codeium.enableSearch": {
+					"type": "boolean",
+					"default": false,
+					"description": "Experimental. Must reload for changes to take effect."
+				},
+				"codeium.searchMaxWorkspaceFileCount": {
+					"type": "integer",
+					"default": 5000,
+					"description": "If search is enabled, we will only attempt to index workspaces that have up to this many files. This file count ignores .gitignore and binary files. Raising this limit from default may lead to performance issues. Values 0 or below will be treated as unlimited."
+				},
+				"codeium.enableCodeLens": {
+					"type": "boolean",
+					"default": true,
+					"description": "AI-powered inline action buttons in your editor."
+				}
+			}
+		},
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "codeium",
+					"title": "Codeium",
+					"icon": "assets/codeium.svg"
+				}
+			]
+		},
+		"views": {
+			"codeium": [
+				{
+					"type": "webview",
+					"id": "codeium.chatPanelView",
+					"name": "Chat",
+					"visibility": "visible"
+				},
+				{
+					"type": "webview",
+					"id": "codeium.searchPanelView",
+					"name": "Search",
+					"visibility": "collapsed"
+				}
+			]
+		},
+		"commands": [
+			{
+				"command": "codeium.provideAuthToken",
+				"title": "Codeium: Provide Authentication Token"
+			},
+			{
+				"command": "codeium.showPreviousCompletion",
+				"title": "Codeium: Show Previous Completion"
+			},
+			{
+				"command": "codeium.showNextCompletion",
+				"title": "Codeium: Show Next Completion"
+			},
+			{
+				"command": "codeium.toggleEnabledForCurrentLanguage",
+				"title": "Codeium: Toggle Enabled for Current Language"
+			},
+			{
+				"command": "codeium.openProfile",
+				"title": "Codeium: Open Profile",
+				"icon": "$(accounts-view-bar-icon)"
+			},
+			{
+				"command": "codeium.openChatView",
+				"title": "Codeium: Open Chat"
+			},
+			{
+				"command": "codeium.refactorCodeBlock",
+				"title": "Codeium: Refactor Selected Code Block"
+			},
+			{
+				"command": "codeium.explainCodeBlock",
+				"title": "Codeium: Explain Selected Code Block"
+			},
+			{
+				"command": "codeium.openSearchView",
+				"title": "Codeium: Open Search"
+			}
+		],
+		"menus": {
+			"commandPalette": [
+				{
+					"command": "codeium.showPreviousCompletion",
+					"when": "inlineSuggestionVisible && !editorReadonly"
+				},
+				{
+					"command": "codeium.showNextCompletion",
+					"when": "inlineSuggestionVisible && !editorReadonly"
+				}
+			],
+			"editor/context": [
+				{
+					"command": "codeium.refactorCodeBlock",
+					"group": "CodeiumGroup@1",
+					"when": "editorTextFocus && editorHasSelection"
+				},
+				{
+					"command": "codeium.explainCodeBlock",
+					"group": "CodeiumGroup@2",
+					"when": "editorTextFocus && editorHasSelection"
+				}
+			],
+			"view/title": [
+				{
+					"command": "codeium.openProfile",
+					"when": "view == codeium.chatPanelView",
+					"group": "navigation"
+				}
+			]
+		},
+		"keybindings": [
+			{
+				"key": "alt+[",
+				"command": "codeium.showPreviousCompletion"
+			},
+			{
+				"key": "alt+]",
+				"command": "codeium.showNextCompletion"
+			},
+			{
+				"key": "ctrl+shift+a",
+				"mac": "shift+cmd+a",
+				"command": "codeium.openChatView",
+				"when": "isMac || isWindows"
+			},
+			{
+				"key": "ctrl+alt+a",
+				"command": "codeium.openChatView",
+				"when": "isLinux"
+			},
+			{
+				"command": "editor.action.inlineSuggest.trigger",
+				"key": "alt+\\",
+				"when": "editorTextFocus && !editorHasSelection && !inlineSuggestionsVisible"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run webpack-prod && npm run lint",
+		"webpack": "npm run protoc && webpack --mode development --progress",
+		"webpack-watch": "npm run webpack -- --mode development --watch",
+		"webpack-prod": "npm run webpack -- --mode production --no-devtool",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run webpack && npm run lint",
+		"lint": "eslint src --ext .ts,.tsx",
+		"lint:fix": "eslint src --ext .ts,.tsx --fix",
+		"test": "xvfb-run node ./out/test-extension/runTest.js",
+		"test-unit": "npm run protoc && mocha -r ts-node/register --exclude \"./src/test-extension/**/*.test.{js,jsx,ts,tsx}\" \"./src/**/*.test.{js,jsx,ts,tsx}\"",
+		"test-compile": "tsc -p ./",
+		"prettier": "prettier --write .",
+		"prettier:check": "prettier --check .",
+		"protoc": "rm -rf ./src/generated && npx buf generate ../../.. --path ../../codeium_common_pb/codeium_common.proto --path ../../language_server_pb/language_server.proto --path ../../chat_pb/chat.proto --path ../../language_server/diff_action_pb/diff_action.proto"
+	},
+	"devDependencies": {
+		"@babel/preset-env": "^7.21.4",
+		"@babel/preset-react": "^7.18.6",
+		"@babel/preset-typescript": "^7.21.4",
+		"@bufbuild/buf": "^1.15.0",
+		"@bufbuild/protoc-gen-connect-es": "^0.8.5",
+		"@bufbuild/protoc-gen-es": "^1.2.0",
+		"@types/autosize": "^4.0.1",
+		"@types/glob": "^7.2.0",
+		"@types/mocha": "^9.1.1",
+		"@types/node": "16.x",
+		"@types/react": "^18.0.34",
+		"@types/react-dom": "^18.0.11",
+		"@types/showdown": "^2.0.0",
+		"@types/triple-beam": "^1.3.2",
+		"@types/uuid": "^8.3.4",
+		"@types/vscode": "^1.68.0",
+		"@typescript-eslint/eslint-plugin": "^5.49.0",
+		"@typescript-eslint/parser": "^5.49.0",
+		"@vscode/test-electron": "^2.1.5",
+		"copy-webpack-plugin": "^11.0.0",
+		"css-loader": "^6.7.3",
+		"eslint": "^8.32.0",
+		"eslint-plugin-import": "^2.27.5",
+		"eslint-plugin-react-hooks": "^4.6.0",
+		"glob": "^8.0.3",
+		"mocha": "^10.0.0",
+		"node-loader": "^2.0.0",
+		"postcss": "^8.4.21",
+		"postcss-loader": "^7.2.4",
+		"postcss-preset-env": "^8.3.0",
+		"prettier": "^2.8.4",
+		"style-loader": "^3.3.2",
+		"tailwindcss": "^3.3.1",
+		"ts-loader": "^9.4.1",
+		"typescript": "^4.9.4",
+		"webpack": "^5.74.0",
+		"webpack-cli": "^4.10.0"
+	},
+	"dependencies": {
+		"@bufbuild/connect": "^0.8.5",
+		"@bufbuild/connect-node": "^0.8.5",
+		"@bufbuild/protobuf": "^1.2.0",
+		"@headlessui/react": "^1.7.14",
+		"@heroicons/react": "^2.0.18",
+		"@highlightjs/cdn-assets": "^11.7.0",
+		"@types/lodash": "^4.14.192",
+		"@vscode/codicons": "^0.0.32",
+		"@vscode/webview-ui-toolkit": "^1.2.1",
+		"autosize": "^6.0.1",
+		"babel-loader": "^9.1.2",
+		"crc-32": "^1.2.2",
+		"got": "^11.8.6",
+		"headers-polyfill": "^3.1.2",
+		"hpagent": "^1.2.0",
+		"js-confetti": "^0.11.0",
+		"lodash": "^4.17.21",
+		"moment": "^2.29.4",
+		"os-proxy-config": "^1.1.1",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"showdown": "^2.1.0",
+		"showdown-highlight": "^3.1.0",
+		"triple-beam": "^1.3.0",
+		"ts-proto": "^1.131.0",
+		"unleash-client": "^3.19.0",
+		"uuid": "^9.0.0",
+		"vscode-languageclient": "^8.0.2",
+		"win-ca": "^3.5.0",
+		"winston": "^3.8.2",
+		"winston-transport": "^4.5.0"
+	},
+	"__metadata": {
+		"id": "acab4f40-b6db-42ec-bcd1-01802cbdd988",
+		"publisherId": "082b0525-4adf-4bcc-b60f-afa86c60860d",
+		"publisherDisplayName": "Codeium",
+		"targetPlatform": "universal",
+		"updated": false,
+		"isPreReleaseVersion": false,
+		"installedTimestamp": 1688070668904,
+		"preRelease": false
+	}
+}

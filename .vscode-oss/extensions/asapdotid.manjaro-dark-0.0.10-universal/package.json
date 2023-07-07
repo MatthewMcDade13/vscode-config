@@ -1,0 +1,62 @@
+{
+	"name": "manjaro-dark",
+	"displayName": "Manjaro Dark",
+	"description": "Manjaro themes - color scheme based on Owl, OneDark Pro, Nord, Tokyo and Halcyon",
+	"icon": "icon.png",
+	"publisher": "Asapdotid",
+	"author": {
+		"name": "Asapdotid",
+		"email": "asapdotid@gmail.com"
+	},
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/asapdotid/vscode-manjaro-theme.git"
+	},
+	"version": "0.0.10",
+	"engines": {
+		"vscode": "^1.78.0"
+	},
+	"categories": [
+		"Themes"
+	],
+	"contributes": {
+		"themes": [
+			{
+				"label": "Manjaro OneDark",
+				"uiTheme": "vs-dark",
+				"path": "./themes/manjaro-onedark-color-theme.json"
+			},
+			{
+				"label": "Manjaro Owl",
+				"uiTheme": "vs-dark",
+				"path": "./themes/manjaro-owl-color-theme.json"
+			},
+			{
+				"label": "Manjaro Nord",
+				"uiTheme": "vs-dark",
+				"path": "./themes/manjaro-nord-color-theme.json"
+			},
+			{
+				"label": "Manjaro Tokyo",
+				"uiTheme": "vs-dark",
+				"path": "./themes/manjaro-tokyo-color-theme.json"
+			},
+			{
+				"label": "Manjaro Halcyon",
+				"uiTheme": "vs-dark",
+				"path": "./themes/manjaro-halcyon-color-theme.json"
+			}
+		]
+	},
+	"__metadata": {
+		"id": "8dd6561b-6b17-4e0f-bb3a-de2b33cacabe",
+		"publisherId": "40599b1c-a313-4b8e-9c43-9fa785e5c4ba",
+		"publisherDisplayName": "asapdotid",
+		"targetPlatform": "universal",
+		"updated": false,
+		"isPreReleaseVersion": false,
+		"installedTimestamp": 1688072959357,
+		"preRelease": false
+	}
+}

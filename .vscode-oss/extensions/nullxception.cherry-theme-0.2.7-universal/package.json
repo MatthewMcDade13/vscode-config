@@ -1,0 +1,87 @@
+{
+	"name": "cherry-theme",
+	"type": "module",
+	"displayName": "Cherry",
+	"description": "Fervent Tempo battlesuit inspired Theme for VSCode",
+	"version": "0.2.7",
+	"publisher": "nullxception",
+	"author": {
+		"name": "Nauval Rizky",
+		"url": "https://github.com/nullxception"
+	},
+	"icon": "assets/cherry.png",
+	"preview": false,
+	"galleryBanner": {
+		"color": "#2A2A38",
+		"theme": "dark"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/nullxception/cherry-vscode"
+	},
+	"bugs": {
+		"url": "https://github.com/nullxception/cherry-vscode/issues"
+	},
+	"homepage": "https://github.com/nullxception/cherry-vscode",
+	"engines": {
+		"vscode": "^1.51.1"
+	},
+	"license": "MIT",
+	"categories": [
+		"Themes"
+	],
+	"keywords": [
+		"cherry",
+		"flat",
+		"dark",
+		"pink",
+		"theme",
+		"color-theme"
+	],
+	"contributes": {
+		"themes": [
+			{
+				"label": "Cherry",
+				"uiTheme": "vs-dark",
+				"path": "./themes/base.json"
+			},
+			{
+				"label": "Cherry Midnight",
+				"uiTheme": "vs-dark",
+				"path": "./themes/midnight.json"
+			}
+		]
+	},
+	"devDependencies": {
+		"@babel/eslint-parser": "^7.21.8",
+		"@babel/plugin-syntax-import-assertions": "^7.20.0",
+		"@types/chroma-js": "^2.4.0",
+		"@types/node": "^20.1.3",
+		"chroma-js": "^2.1.2",
+		"color": "^3.1.2",
+		"eslint": "^8.42.0",
+		"eslint-config-prettier": "^8.8.0",
+		"eslint-config-semistandard": "^17.0.0",
+		"eslint-config-standard": "^17.1.0",
+		"eslint-plugin-import": "^2.27.5",
+		"eslint-plugin-n": "^15.7.0",
+		"eslint-plugin-promise": "^6.1.1",
+		"nodemon": "^2.0.3",
+		"vsce": "^1.100.1"
+	},
+	"scripts": {
+		"build": "node src/index.js",
+		"watch": "nodemon --watch src/index.js",
+		"package": "vsce package"
+	},
+	"__metadata": {
+		"id": "3a8988d3-d0e7-4b9e-a92c-5336c9b294c6",
+		"publisherDisplayName": "nullxception",
+		"publisherId": "88ccc272-c90c-40a2-aa42-30ab39577a0e",
+		"targetPlatform": "universal",
+		"updated": false,
+		"isPreReleaseVersion": false,
+		"installedTimestamp": 1688072921631,
+		"preRelease": false
+	}
+}

@@ -1,0 +1,58 @@
+{
+	"name": "malibu",
+	"displayName": "Malibu",
+	"description": "A retro theme inspired by the surfing days in Malibu beach",
+	"version": "0.0.10",
+	"publisher": "wicked-labs",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Malibu-Theme/vs-code"
+	},
+	"bugs": {
+		"type": "git",
+		"url": "https://github.com/Malibu-Theme/vs-code"
+	},
+	"homepage": "https://marketplace.visualstudio.com/items?itemName=wicked-labs.malibu",
+	"icon": "logo/theme-icon.png",
+	"engines": {
+		"vscode": "^1.68.0"
+	},
+	"galleryBanner": {
+		"color": "#FAF4ED",
+		"theme": "light"
+	},
+	"categories": [
+		"Themes"
+	],
+	"keywords": [
+		"michael andreuzza",
+		"surf vibes",
+		"retro",
+		"80's",
+		"modern"
+	],
+	"contributes": {
+		"themes": [
+			{
+				"label": "Malibu Day",
+				"uiTheme": "vs",
+				"path": "./themes/malibu-sunrise.json"
+			},
+			{
+				"label": "Malibu Dark",
+				"uiTheme": "vs-dark",
+				"path": "./themes/malibu-sunset.json"
+			}
+		]
+	},
+	"__metadata": {
+		"id": "7284d0f3-8a01-43df-9cf1-fac177a2bab2",
+		"publisherId": "c57d5d4f-f603-465b-b932-c5853745bbab",
+		"publisherDisplayName": "wicked-labs",
+		"targetPlatform": "universal",
+		"updated": false,
+		"isPreReleaseVersion": false,
+		"installedTimestamp": 1688070752232,
+		"preRelease": false
+	}
+}

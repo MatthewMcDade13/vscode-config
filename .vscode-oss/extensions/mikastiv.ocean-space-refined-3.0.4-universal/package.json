@@ -1,0 +1,50 @@
+{
+	"name": "ocean-space-refined",
+	"displayName": "Ocean Space Refined",
+	"description": "Deep dark theme with a taste of the space",
+	"version": "3.0.4",
+	"icon": "images/icon.png",
+	"galleryBanner": {
+		"color": "#23262E",
+		"theme": "dark"
+	},
+	"publisher": "mikastiv",
+	"author": {
+		"name": "Mikastiv",
+		"url": "https://github.com/Mikastiv",
+		"email": "mikastiv@outlook.com"
+	},
+	"repository": {
+		"url": "https://github.com/Mikastiv/ocean-space-refined"
+	},
+	"engines": {
+		"vscode": "^1.76.0"
+	},
+	"categories": [
+		"Themes"
+	],
+	"contributes": {
+		"themes": [
+			{
+				"label": "Ocean Space Refined",
+				"uiTheme": "vs-dark",
+				"path": "./themes/OceanSpace-color-theme.json"
+			},
+			{
+				"label": "Ocean Space Refined Italic",
+				"uiTheme": "vs-dark",
+				"path": "./themes/OceanSpace-italic-color-theme.json"
+			}
+		]
+	},
+	"__metadata": {
+		"id": "af13a708-db7f-4f94-998e-e3484f1c35a7",
+		"publisherId": "4b740672-e363-4a5f-9ce4-f9b66dcb2810",
+		"publisherDisplayName": "Mikastiv",
+		"targetPlatform": "universal",
+		"updated": false,
+		"isPreReleaseVersion": false,
+		"installedTimestamp": 1688072926967,
+		"preRelease": false
+	}
+}
